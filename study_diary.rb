@@ -1,4 +1,12 @@
 require_relative 'study_item'
+Study_item.create_db
+
+REGISTER = 1
+VIEW     = 2
+SEARCH   = 3
+DELETE   = 4
+EXIT     = 5
+
 def clear
     system('clear')
 end
@@ -19,10 +27,11 @@ def welcome
 end
 
 def menu
-    puts "[1] Cadastrar um item para estudar"
-    puts "[2] Ver todos os itens cadastrados"
-    puts "[3] Buscar um item de estudo"
-    puts "[4] Sair"
+    puts "[#{REGISTER}] Cadastrar um item para estudar"
+    puts "[#{VIEW}] Ver todos os itens cadastrados"
+    puts "[#{SEARCH}] Buscar um item de estudo"
+    puts "[#{DELETE}] Deletar um item"
+    puts "[#{EXIT}] Sair"
     print 'Escolha uma opção: '
     gets.to_i
 end
@@ -34,15 +43,17 @@ option = menu
 loop do
     clear
     case option
-    when 1
+    when REGISTER
         Study_item.register
-    when 2
-        Study_item.all
-    when 3
+    when VIEW
+        puts Study_item.all
+    when SEARCH
         print "Digite o termo para buscar na categoria ou título: "
         query = gets.chomp
         Study_item.search(query)
-    when 4
+    when DELETE
+        Study_item.delete_item
+    when EXIT
         clear
         puts 'Obrigado por usar o Diário de Estudos'
         break
