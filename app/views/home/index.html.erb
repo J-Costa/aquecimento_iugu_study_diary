@@ -1,0 +1,7 @@
+<ul>
+<% @study_items.each do |item| %>
+    <li> 
+        <%=link_to("#{item.title} - #{item.category}", study_item_path(item.id)) %> 
+    </li>
+<% end %>
+</ul>
