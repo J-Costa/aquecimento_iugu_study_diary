@@ -1,8 +1,8 @@
 <h4>Cadastrar item de estudo</h4>
-<%= form_with(model: StudyItem.new) do |f|%>
+<%= form_with(model: @study_item) do |f|%>
     <div>
         <%= f.label :title, 'Título' %>
-        <%= f.text_field :title %>
+        <%= f.text_field :title  %>
     </div>
     <div>
         <%= f.label :category, 'Categoria' %>

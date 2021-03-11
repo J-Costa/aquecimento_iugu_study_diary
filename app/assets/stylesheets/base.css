@@ -1,0 +1,10 @@
+
+ div.container {
+    background-color: lightgray;
+    padding: 1em;
+}
+
+div.field_with_errors input {
+    border: 1px solid red
+    
+}
