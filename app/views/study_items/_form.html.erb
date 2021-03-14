@@ -4,8 +4,8 @@
         <%= f.text_field :title  %>
     </div>
     <div>
-        <%= f.label :category, 'Categoria' %>
-        <%= f.text_field :category %>
+        <%= f.label :category_id, 'Categoria' %>
+        <%= f.collection_select :category_id, Category.all.order(:title), :id, :title %>
     </div>
     <div>
         <span>Feito? </span>
@@ -15,6 +15,6 @@
         <%= f.radio_button  :done, 'false' %>
     </div>
     
-    <%= f.submit 'Editar' %>
+    <%= f.submit %>
     
 <% end %>

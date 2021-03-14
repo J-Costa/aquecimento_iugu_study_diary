@@ -27,13 +27,25 @@ class StudyItemsController < ApplicationController
     def update
         set_study_item
         if @study_item.update(study_item_params)
-          flash[:success] = "Atualizado com sucesso!"
+          flash[:notice] = "Atualizado com sucesso!"
           redirect_to @study_item
         else
-          flash[:error] = "Não foi possível atualizar!"
+          flash[:alert] = "Não foi possível atualizar!"
           render 'edit'
         end
     end
+
+    def destroy
+        @study_item = set_study_item
+        if @study_item.destroy
+            flash[:notice] = 'Deletado com sucesso!.'
+            redirect_to root_path
+        else
+            flash[:alert] = 'Algo deu errado!'
+            redirect_to root_path
+        end
+    end
+    
     
     def mark_as_done
         set_study_item
@@ -48,7 +60,7 @@ class StudyItemsController < ApplicationController
         end
         
         def study_item_params
-            params.require(:study_item).permit(:title, :category, :done)
+            params.require(:study_item).permit(:title, :category_id, :done)
         end
     
 end

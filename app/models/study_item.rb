@@ -1,7 +1,8 @@
 class StudyItem < ApplicationRecord
+    belongs_to :category
     validates :title, presence: true
     def full_title
-        "#{self.title} - #{self.category} "
+        "#{title} - #{category.title} "
     end
 
     def done!
